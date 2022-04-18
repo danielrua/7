@@ -1,12 +1,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "mainwindow2.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+
 {
     ui->setupUi(this);
-    ui->StartButton;
+
+    connect(ui->StartButton,SIGNAL(clicked()),this,SLOT(abrirJuego()));
 }
 
 MainWindow::~MainWindow()
@@ -14,7 +17,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::abrirJuego(){
-    close();
+void MainWindow::abrirJuego()
+{
+
+   GameScreen = new MainWindow2(this);
+   GameScreen->show();
 }
 

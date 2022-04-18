@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <mainwindow2.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,6 +19,7 @@ private slots:
     void abrirJuego();
 private:
     Ui::MainWindow *ui;
+    MainWindow2 *GameScreen;
 
 };
 #endif // MAINWINDOW_H

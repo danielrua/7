@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/new/galaxi">
+        <file>FINALP/NAVES.png</file>
+        <file>FINALP/ENAVE.png</file>
+    </qresource>
+</RCC>

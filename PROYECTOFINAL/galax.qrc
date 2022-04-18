@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/new/files">
+        <file>FINALP/ENAVE.png</file>
+        <file>FINALP/NAVES.png</file>
+    </qresource>
+</RCC>
