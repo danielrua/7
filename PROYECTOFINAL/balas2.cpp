@@ -5,7 +5,7 @@
 
 balas2::balas2()
 {
-    setRect(-38,38,50,10);
+    setPixmap(QPixmap(":/new/files/FINALP/eshota.png"));
     QTimer *timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
     timer->start(50);
@@ -16,7 +16,7 @@ balas2::balas2()
 void balas2::move()
 {
    setPos(x()+10,y()-2);
-   if(pos().x()+rect().height()>600){
+   if(pos().x()+pixmap().height()>600){
        scene()->removeItem(this);
        delete this;
    }

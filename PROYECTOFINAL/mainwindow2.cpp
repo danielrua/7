@@ -2,6 +2,7 @@
 #include "ui_mainwindow2.h"
 #include <QTimer>
 #include <stdlib.h>
+
 //#include <QMediaPlayer>
 
 //MainWindow2 *GameScreen;
@@ -14,7 +15,7 @@ MainWindow2::MainWindow2(QWidget *parent) :
     nave = new personajes(700,250,50);
     scene = new QGraphicsScene();
 
-    for(int n=0;n<36;n++){
+    for(int n=0;n<50;n++){
         int random_x= rand() %700;
         int random_y= rand() %700;
         rocas.push_back(new obstaculos(random_x,random_y,20,20));
@@ -25,8 +26,15 @@ MainWindow2::MainWindow2(QWidget *parent) :
 
     enemy* enave = new enemy();
     enemy* enave2 = new enemy();
+    agujero *hole= new agujero();
+    agujero *hole2= new agujero();
+    planeta *marte = new planeta();
+
+    hole->setPos(20,80);
+    hole2->setPos(20,350);
     enave->setPos(100,30);
     enave2->setPos(100,330);
+    marte->setPos(-200,95);
 
 
     ui->graphicsView->setScene(scene);
@@ -38,14 +46,17 @@ MainWindow2::MainWindow2(QWidget *parent) :
     scene->addItem(nave);
     scene->addItem(enave);
     scene->addItem(enave2);
+    scene->addItem(hole);
+    scene->addItem(hole2);
+    scene->addItem(marte);
 
     QTimer *timer = new QTimer();
-    QTimer *timer2 = new QTimer();
+    QTimer *timer1 = new QTimer();
     connect(timer,SIGNAL(timeout()),enave2,SLOT(shot()));
     connect(timer,SIGNAL(timeout()),enave,SLOT(shot2()));
-    connect(timer2,SIGNAL(timeout()),this,SLOT(Actualizar()));
+    connect(timer1,SIGNAL(timeout()),this,SLOT(Actualizar()));
     timer->start(800);
-    timer2->start(1000);
+    timer1->start(1000);
 
 
 
@@ -60,9 +71,10 @@ void MainWindow2::Actualizar()
 {
     count--;
     ui->lcdNumber->display(count);
-    if(count==0)
-        timer->stop();
-}
+    if(count==0){
+        scene->clear();
+        GameOver("TIEMPO TERMINADO.");
+}}
 
 
 void MainWindow2::keyPressEvent(QKeyEvent *event)
@@ -90,6 +102,27 @@ void MainWindow2::keyPressEvent(QKeyEvent *event)
     else if(event->key()==Qt::Key_Space){
         nave->Disparar();
     }
+}
+
+void MainWindow2::GameOver(QString textToDisplay)
+{
+    for(size_t i=0, n = scene->items().size(); i < n ; i++){
+        scene->items()[i]->setEnabled(false);
+    }
+    drawPanel(0,0,800,1300,QColorConstants::Svg::purple,1);
+    QGraphicsTextItem *text = scene->addText(textToDisplay);
+    text->setPos(300, 300);
+}
+
+void MainWindow2::drawPanel(int x, int y, int width, int height, QColor color, double opacity)
+{
+    QGraphicsRectItem* panel = new QGraphicsRectItem(x,y,width,height);
+    QBrush brush;
+    brush.setStyle(Qt::SolidPattern);
+    brush.setColor(color);
+    panel->setBrush(brush);
+    panel->setOpacity(opacity);
+    scene->addItem(panel);
 }
 
 

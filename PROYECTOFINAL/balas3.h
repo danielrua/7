@@ -3,7 +3,7 @@
 #include <QGraphicsRectItem>
 #include <QObject>
 
-class balas3: public QObject, public QGraphicsRectItem
+class balas3: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:

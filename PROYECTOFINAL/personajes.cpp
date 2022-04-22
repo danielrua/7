@@ -5,6 +5,7 @@
 #include <balas3.h>
 #include <obstaculos.h>
 #include <mainwindow2.h>
+#include <planeta.h>
 
 extern MainWindow2 *GameScreen;
 personajes::personajes()
@@ -37,7 +38,7 @@ void personajes::MoveUp()
     setPos(posx,posy);
     QList<QGraphicsItem *>colliding_items= collidingItems();
     for(int i=0, n=colliding_items.size();i<n;i++){
-        if(typeid(*(colliding_items[i]))==typeid(obstaculos) or typeid(*(colliding_items[i]))==typeid(balas2) or typeid(*(colliding_items[i]))==typeid(balas3)){
+        if(typeid(*(colliding_items[i]))==typeid(obstaculos) or typeid(*(colliding_items[i]))==typeid(balas2) or typeid(*(colliding_items[i]))==typeid(balas3)or typeid(*(colliding_items[i]))==typeid(agujero)){
             delete colliding_items[i];
             delete this;
             return;
@@ -49,11 +50,16 @@ void personajes::MoveDown()
     setPos(posx,posy);
     QList<QGraphicsItem *>colliding_items= collidingItems();
     for(int i=0, n=colliding_items.size();i<n;i++){
-        if(typeid(*(colliding_items[i]))==typeid(obstaculos) or typeid(*(colliding_items[i]))==typeid(balas2) or typeid(*(colliding_items[i]))==typeid(balas3)){
+        if(typeid(*(colliding_items[i]))==typeid(obstaculos) or typeid(*(colliding_items[i]))==typeid(balas2) or typeid(*(colliding_items[i]))==typeid(balas3) or typeid(*(colliding_items[i]))==typeid(balas3)or typeid(*(colliding_items[i]))==typeid(agujero)){
             delete colliding_items[i];
             delete this;
             return;
-        }}
+
+        }
+        else if(typeid(*(colliding_items[i]))==typeid(planeta)){
+
+        }
+    }
 }
 
 void personajes::MoveRight()
@@ -62,7 +68,7 @@ void personajes::MoveRight()
     setPos(posx,posy);
     QList<QGraphicsItem *>colliding_items= collidingItems();
     for(int i=0, n=colliding_items.size();i<n;i++){
-        if(typeid(*(colliding_items[i]))==typeid(obstaculos) or typeid(*(colliding_items[i]))==typeid(balas2) or typeid(*(colliding_items[i]))==typeid(balas3)){
+        if(typeid(*(colliding_items[i]))==typeid(obstaculos) or typeid(*(colliding_items[i]))==typeid(balas2) or typeid(*(colliding_items[i]))==typeid(balas3) or typeid(*(colliding_items[i]))==typeid(balas3)or typeid(*(colliding_items[i]))==typeid(agujero)){
             delete colliding_items[i];
             delete this;
             return;
@@ -75,7 +81,7 @@ void personajes::MoveLeft()
     setPos(posx,posy);
     QList<QGraphicsItem *>colliding_items= collidingItems();
     for(int i=0, n=colliding_items.size();i<n;i++){
-        if(typeid(*(colliding_items[i]))==typeid(obstaculos) or typeid(*(colliding_items[i]))==typeid(balas2) or typeid(*(colliding_items[i]))==typeid(balas3)){
+        if(typeid(*(colliding_items[i]))==typeid(obstaculos) or typeid(*(colliding_items[i]))==typeid(balas2) or typeid(*(colliding_items[i]))==typeid(balas3) or typeid(*(colliding_items[i]))==typeid(balas3)or typeid(*(colliding_items[i]))==typeid(agujero)){
             delete colliding_items[i];
             delete this;
             return;

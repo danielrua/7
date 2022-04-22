@@ -6,6 +6,7 @@
 #include <balas2.h>
 #include <balas3.h>
 #include "mainwindow2.h"
+#include <enemy.h>
 
 balas::balas()
 {
@@ -23,7 +24,7 @@ void balas::move()
     QList<QGraphicsItem *>colliding_items= collidingItems();
 
     for(int i=0, n=colliding_items.size();i<n;i++){
-        if(typeid(*(colliding_items[i]))==typeid(obstaculos) or typeid(*(colliding_items[i]))==typeid(balas2) or typeid(*(colliding_items[i]))==typeid(balas3)){
+        if(typeid(*(colliding_items[i]))==typeid(obstaculos) or typeid(*(colliding_items[i]))==typeid(balas2) or typeid(*(colliding_items[i]))==typeid(balas3) or typeid(*(colliding_items[i]))==typeid(enemy)){
             delete colliding_items[i];
             delete this;
             return;

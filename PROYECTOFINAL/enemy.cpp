@@ -8,7 +8,7 @@
 
 enemy::enemy()
 {
-    setRect(-38,38,10,10);
+    setPixmap(QPixmap(":/new/files/FINALP/ENAVE.png"));
     QTimer *timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(mover()));
     //connect(timer,SIGNAL(timeout()),this,SLOT(shot()));
