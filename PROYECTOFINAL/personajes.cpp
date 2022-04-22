@@ -1,7 +1,12 @@
 #include "personajes.h"
 #include "balas.h"
 #include <QGraphicsScene>
+#include <balas2.h>
+#include <balas3.h>
+#include <obstaculos.h>
+#include <mainwindow2.h>
 
+extern MainWindow2 *GameScreen;
 personajes::personajes()
 {
 
@@ -30,23 +35,51 @@ void personajes::MoveUp()
 {
     posy=posy-velocidad;
     setPos(posx,posy);
+    QList<QGraphicsItem *>colliding_items= collidingItems();
+    for(int i=0, n=colliding_items.size();i<n;i++){
+        if(typeid(*(colliding_items[i]))==typeid(obstaculos) or typeid(*(colliding_items[i]))==typeid(balas2) or typeid(*(colliding_items[i]))==typeid(balas3)){
+            delete colliding_items[i];
+            delete this;
+            return;
+        }}
 }
 void personajes::MoveDown()
 {
     posy=posy+velocidad;
     setPos(posx,posy);
+    QList<QGraphicsItem *>colliding_items= collidingItems();
+    for(int i=0, n=colliding_items.size();i<n;i++){
+        if(typeid(*(colliding_items[i]))==typeid(obstaculos) or typeid(*(colliding_items[i]))==typeid(balas2) or typeid(*(colliding_items[i]))==typeid(balas3)){
+            delete colliding_items[i];
+            delete this;
+            return;
+        }}
 }
 
 void personajes::MoveRight()
 {
     posx=posx+velocidad;
     setPos(posx,posy);
+    QList<QGraphicsItem *>colliding_items= collidingItems();
+    for(int i=0, n=colliding_items.size();i<n;i++){
+        if(typeid(*(colliding_items[i]))==typeid(obstaculos) or typeid(*(colliding_items[i]))==typeid(balas2) or typeid(*(colliding_items[i]))==typeid(balas3)){
+            delete colliding_items[i];
+            delete this;
+            return;
+        }}
 }
 
 void personajes::MoveLeft()
 {
     posx=posx-velocidad;
     setPos(posx,posy);
+    QList<QGraphicsItem *>colliding_items= collidingItems();
+    for(int i=0, n=colliding_items.size();i<n;i++){
+        if(typeid(*(colliding_items[i]))==typeid(obstaculos) or typeid(*(colliding_items[i]))==typeid(balas2) or typeid(*(colliding_items[i]))==typeid(balas3)){
+            delete colliding_items[i];
+            delete this;
+            return;
+        }}
 }
 
 void personajes::Disparar()

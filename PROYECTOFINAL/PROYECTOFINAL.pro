@@ -1,5 +1,7 @@
 QT       += core gui
 
+
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -10,18 +12,26 @@ CONFIG += c++11
 
 SOURCES += \
     balas.cpp \
+    balas2.cpp \
+    balas3.cpp \
     enemy.cpp \
     main.cpp \
     mainwindow.cpp \
     mainwindow2.cpp \
-    personajes.cpp
+    obstaculos.cpp \
+    personajes.cpp \
+    score.cpp
 
 HEADERS += \
     balas.h \
+    balas2.h \
+    balas3.h \
     enemy.h \
     mainwindow.h \
     mainwindow2.h \
-    personajes.h
+    obstaculos.h \
+    personajes.h \
+    score.h
 
 FORMS += \
     mainwindow.ui \

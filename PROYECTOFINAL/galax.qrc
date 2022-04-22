@@ -2,5 +2,9 @@
     <qresource prefix="/new/files">
         <file>FINALP/ENAVE.png</file>
         <file>FINALP/NAVES.png</file>
+        <file>FINALP/fondoc.png</file>
+        <file>FINALP/cancion.mp3</file>
+        <file>FINALP/laser.mp3</file>
+        <file>FINALP/shot.png</file>
     </qresource>
 </RCC>

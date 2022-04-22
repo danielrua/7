@@ -1,9 +1,10 @@
 #ifndef BALAS_H
 #define BALAS_H
-#include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 #include <QObject>
 
-class balas: public QObject, public QGraphicsRectItem
+
+class balas: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
@@ -11,6 +12,7 @@ public:
 
 public slots:
     void move();
+    int acelerar(int cont=0);
 };
 
 #endif // BALAS_H

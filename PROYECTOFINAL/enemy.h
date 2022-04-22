@@ -1,23 +1,21 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 #include <QGraphicsRectItem>
-#include <QObject>
 #include <QGraphicsItem>
 #include <QPainter>
+#include <QObject>
 
-class enemy:public QGraphicsItem
+
+class enemy: public QObject, public QGraphicsRectItem
 {
-    int radio;
-    int posy;
-    int posx;
+    Q_OBJECT
 
 public:
     enemy();
-    enemy(int x, int y, int r);
-    virtual QRectF boundingRect() const;
-    virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
 public slots:
-
+void mover();
+void shot();
+void shot2();
 };
 
 #endif // ENEMY_H
